@@ -1,0 +1,17 @@
+adpyke.codesnap
+bmewburn.vscode-intelephense-client
+bradlc.vscode-tailwindcss
+brapifra.phpserver
+esbenp.prettier-vscode
+ms-vscode.vscode-typescript-next
+ms-vsliveshare.vsliveshare
+pkief.material-icon-theme
+redhat.java
+ritwickdey.liveserver
+sondermx.java-kits
+thekalinga.bootstrap4-vscode
+xabikos.javascriptsnippets
+zhuangtongfa.material-theme
+dsznajder.es7-react-js-snippets
+vscjava.vscode-java-pack
+
