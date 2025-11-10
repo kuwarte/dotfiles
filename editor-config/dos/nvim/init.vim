@@ -100,8 +100,8 @@ call plug#end()
 " ======================================================
 " CoC Config
 " ======================================================
-let g:coc_java_home = 'C:\Program Files\Java\jdk-25'
-let g:tagbar_ctags_bin = 'C:/Users/Jasper/AppData/Local/Microsoft/WinGet/Packages/UniversalCtags.Ctags_Microsoft.Winget.Source_8wekyb3d8bbwe/ctags.exe'
+let g:coc_java_home = 'C:\Program Files\Java\jdk-21'
+let g:tagbar_ctags_bin = 'C:/Users/<username>/AppData/Local/Microsoft/WinGet/Packages/UniversalCtags.Ctags_Microsoft.Winget.Source_8wekyb3d8bbwe/ctags.exe'
 let g:coc_user_config = {
       \ 'tailwindCSS.includeLanguages': {
       \   'javascript': 'javascript',
@@ -157,7 +157,7 @@ if has("title")
     let &titlestring = 'NVIM: ' . expand('%:t')
 endif
 autocmd BufEnter * let &titlestring = 'NeoVIM -- ' . (expand('%:t') == '' ? '[No File]' : expand('%:t'))
-autocmd VimEnter * if argc() == 0 | NERDTree C:\Users\Jasper\code | endif
+autocmd VimEnter * if argc() == 0 | NERDTree C:\Users\<username>\code | endif
 
 
 
@@ -336,5 +336,6 @@ inoremap ' ''<Left>
 " Autoformat on Save
 " ======================================================
 autocmd BufWritePre *.js,*.ts,*.tsx,*.jsx,*.json,*.html,*.css :CocCommand prettier.formatFile
+
 
 
