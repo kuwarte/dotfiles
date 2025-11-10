@@ -1,26 +1,26 @@
 " 
 	" 
 		"               _,-'. 
-		"            ,-'._  . 
-		" . ..,      |....\ . 
-		" \.'.'/     \....| . 
-		"= ., =       |...| . 
-		"/ .. \    ,-'\#/,'. 
-		"  ..     ,'   `,,. `. 
-		"  ,.....,' , ,;' \| . 
-		" (..|\    _/|/'   _| . 
-		"  ../,-''  | >-'' _,\ 
-		"  ..       ==\ ,-'  .' 
-		"  ..       |  . \ ,| 
-		"  ..       |    |` . 
-		"  ..       |    |   \ 
-		"  ..       |    \    \ 
-		"  ..       |     |    \ 
-		"  ..       |      \_,-' 
-		"  ..       |___,,--")_\ 
-		"  ..         |_|   ... 
-		"  ..        ... 
-		"  ..................................................  . .. . ...........                ...
+		"             ,-'._  . 
+		"  . ..,      |....\ . 
+		"  \.'.'/     \....| . 
+		" = ., =       |...| . 
+		" / .. \    ,-'\#/,'. 
+		"   ..     ,'   `,,. `. 
+		"   ,.....,' , ,;' \| . 
+		"  (..|\    _/|/'   _| . 
+		"   ../,-''  | >-'' _,\ 
+		"   ..       ==\ ,-'  .' 
+		"   ..       |  . \ ,| 
+		"   ..       |    |` . 
+		"   ..       |    |   \ 
+		"   ..       |    \    \ 
+		"   ..       |     |    \ 
+		"   ..       |      \_,-' 
+		"   ..       |___,,--")_\ 
+		"   ..         |_|   ... 
+		"   ..        ... 
+		"   ..................................................  . .. . ...........                ...
 	"  
 " |==================================== == NeoVIM Config
 "
@@ -100,8 +100,8 @@ call plug#end()
 " ======================================================
 " CoC Config
 " ======================================================
-let g:coc_java_home = 'C:\Program Files\Java\jdk-21'
-let g:tagbar_ctags_bin = 'C:/Users/<username>/AppData/Local/Microsoft/WinGet/Packages/UniversalCtags.Ctags_Microsoft.Winget.Source_8wekyb3d8bbwe/ctags.exe'
+let g:coc_java_home = 'C:\Program Files\Java\jdk-25'
+let g:tagbar_ctags_bin = 'C:/Users/Jasper/AppData/Local/Microsoft/WinGet/Packages/UniversalCtags.Ctags_Microsoft.Winget.Source_8wekyb3d8bbwe/ctags.exe'
 let g:coc_user_config = {
       \ 'tailwindCSS.includeLanguages': {
       \   'javascript': 'javascript',
@@ -157,7 +157,88 @@ if has("title")
     let &titlestring = 'NVIM: ' . expand('%:t')
 endif
 autocmd BufEnter * let &titlestring = 'NeoVIM -- ' . (expand('%:t') == '' ? '[No File]' : expand('%:t'))
-autocmd VimEnter * if argc() == 0 | NERDTree C:\Users\<username>\code | endif
+
+
+
+
+
+
+
+
+
+
+" ======================================================
+" Main Menu
+" ======================================================
+function! StartMenu()
+  if argc() != 0
+    return
+  endif
+
+  let l:project_root = system('git rev-parse --show-toplevel 2>/dev/null')
+  if v:shell_error == 0
+    execute 'cd' fnameescape(trim(l:project_root))
+  else
+    execute 'cd C:\Users\Jasper\code'
+  endif
+
+  enew
+  setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted
+  setlocal nonumber norelativenumber nocursorline signcolumn=no
+
+  setlocal modifiable
+
+call append(0, [
+	  \ "++============//====================================>>>",
+	  \ "||===========//=====================================>>>",
+	  \ "||101010101 //10101010..1010...0101..    ..... .... ",
+      \ "||0  10    //       _,-'|J0101.                     ",
+      \ "||101     //    ,-'._  .      |       ''     =      ",
+      \ "||0  . ..//     |.... .       . -  0 |  0    | 0  t ",
+      \ "||   .'.//       '   | .      | |ch 0s3 y ur pr j3c ",
+      \ "===== |, ======== |==| |===========================>>>",
+      \ "||  //|.      ,'#/,'.   --.       |       |.        ",
+      \ "|| // |.     | |  `,,. `. '.      -      ..         ",
+      \ "||//  |.____,| ,   ' | .   '.      -                ",
+      \ "|//0 (|.|    _/       _| |  |.   ||                 ",
+      \ "//01  |./,-''..| >-'' _,  | |..      ---            ",
+      \ "/|101 |.   ....==  -'     |_|.... 01AS-|            ",
+      \ "||010 |.01.....|       | '  |..... 101P=            ",
+      \ "||101 |.1......|       |.|==.......                 ",
+      \ "||010 |........||    | | |_.........         0101   ",
+      \ "||101 |..|.....|     | || |_...|..... 010101ER      ",
+      \ "||01 .|...'....|   |  || ' |....'|.... 101010       ",
+      \ "||1 ..|........|  '   |||-'|........... 0101     101",
+      \ "|| ...|........|_|_|,--\")_|............ 01         ",
+      \ "||....|..........|_|   ...|........'..... 01        ",
+      \ "||....=............|101====..0..1010'.'... 0101 101 ",
+	  \ "||..01010..1.101====010101....01.10...0|.1010101....",
+	  \ "||==================================================>>>",
+	  \ "||==================================================>>>",
+	  \ "|| [m] FILE TREE MENU - Right................       ",
+	  \ "|| - [a] Add..................................      ",
+	  \ "|| - [m] Move/Rename...........................     ",
+	  \ "|| - [d] Delete.................................    ",
+	  \ "|| - [s] System Command..........................   ",
+	  \ "|| [:qa] EXIT ALL.................................  ",
+	  \ "VV ................................................ ",
+	  \ "VV                                                  "
+      \ ])
+
+
+  file MENU
+
+  setlocal nomodifiable
+
+  silent! vertical rightbelow NERDTree
+  wincmd l
+endfunction
+
+autocmd VimEnter * if argc() == 0 | call StartMenu() | endif
+
+autocmd BufEnter * if &buftype !=# 'nofile' | 
+      \ if bufname('MENU') !=# '' | execute 'bwipeout MENU' | endif | 
+      \ endif
 
 
 
@@ -205,8 +286,6 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <Leader>nn :NERDTreeToggle<CR>
 nnoremap <C-l> :UndotreeToggle<CR>
 
-autocmd VimEnter * let g:project_root = system('git rev-parse --show-toplevel 2>/dev/null') |
-      \ if v:shell_error == 0 | execute 'cd ' . g:project_root | execute 'NERDTree' g:project_root | endif
 
 
 
@@ -336,6 +415,5 @@ inoremap ' ''<Left>
 " Autoformat on Save
 " ======================================================
 autocmd BufWritePre *.js,*.ts,*.tsx,*.jsx,*.json,*.html,*.css :CocCommand prettier.formatFile
-
 
 
