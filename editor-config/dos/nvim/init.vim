@@ -124,7 +124,7 @@ call plug#end()
 " CoC Config
 " ======================================================
 let g:coc_java_home = 'C:\Program Files\Java\jdk-25'
-let g:tagbar_ctags_bin = 'C:/Users/Jasper/AppData/Local/Microsoft/WinGet/Packages/UniversalCtags.Ctags_Microsoft.Winget.Source_8wekyb3d8bbwe/ctags.exe'
+let g:tagbar_ctags_bin = 'C:/Users/<username>/AppData/Local/Microsoft/WinGet/Packages/UniversalCtags.Ctags_Microsoft.Winget.Source_8wekyb3d8bbwe/ctags.exe'
 let g:coc_user_config = {
       \ 'tailwindCSS.includeLanguages': {
       \   'javascript': 'javascript',
@@ -202,7 +202,7 @@ function! StartMenu()
   if v:shell_error == 0
     execute 'cd' fnameescape(trim(l:project_root))
   else
-    execute 'cd C:\Users\Jasper\code'
+    execute 'cd C:\Users\<username>\code'
   endif
 
   enew
