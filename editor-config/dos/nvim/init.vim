@@ -1,13 +1,38 @@
-" WINDOWS NeoVIM CONFIG
-
+" 
+	" 
+		"               _,-'. 
+		"            ,-'._  . 
+		" . ..,      |....\ . 
+		" \.'.'/     \....| . 
+		"= ., =       |...| . 
+		"/ .. \    ,-'\#/,'. 
+		"  ..     ,'   `,,. `. 
+		"  ,.....,' , ,;' \| . 
+		" (..|\    _/|/'   _| . 
+		"  ../,-''  | >-'' _,\ 
+		"  ..       ==\ ,-'  .' 
+		"  ..       |  . \ ,| 
+		"  ..       |    |` . 
+		"  ..       |    |   \ 
+		"  ..       |    \    \ 
+		"  ..       |     |    \ 
+		"  ..       |      \_,-' 
+		"  ..       |___,,--")_\ 
+		"  ..         |_|   ... 
+		"  ..        ... 
+		"  ..................................................  . .. . ...........                ...
+	"  
+" |==================================== == NeoVIM Config
+"
+" Installation of vim-plug
+"	
+"	iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | `
+"		ni "$env:LOCALAPPDATA\nvim-data\site\autoload\plug.vim" -Force
+" 
+"
 " ======================================================
 " Plugins
 " ======================================================
-
-" Installation of vim-plug
-"iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | `
-"    ni "$env:LOCALAPPDATA\nvim-data\site\autoload\plug.vim" -Force
-
 call plug#begin()
 
 " --- Essentials ---
@@ -42,7 +67,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	" LSP and Intellisense
 		"Java
 		"JavaScript
-		"TypeScript
+	  	"TypeScript
 		"JSX/TSX
 Plug 'tpope/vim-fugitive'                      
 	" Git Integration
@@ -76,7 +101,7 @@ call plug#end()
 " CoC Config
 " ======================================================
 let g:coc_java_home = 'C:\Program Files\Java\jdk-25'
-let g:tagbar_ctags_bin = 'C:/Users/<Username>/AppData/Local/Microsoft/WinGet/Packages/UniversalCtags.Ctags_Microsoft.Winget.Source_8wekyb3d8bbwe/ctags.exe'
+let g:tagbar_ctags_bin = 'C:/Users/Jasper/AppData/Local/Microsoft/WinGet/Packages/UniversalCtags.Ctags_Microsoft.Winget.Source_8wekyb3d8bbwe/ctags.exe'
 let g:coc_user_config = {
       \ 'tailwindCSS.includeLanguages': {
       \   'javascript': 'javascript',
@@ -120,6 +145,11 @@ set visualbell
 set noshowmode
 set noswapfile
 set timeoutlen=300
+set clipboard=unnamedplus
+
+nnoremap <leader>w :w<CR>
+nnoremap <leader>W :wa<CR>
+
 
 " Window / tab title
 if has("title")
@@ -127,7 +157,7 @@ if has("title")
     let &titlestring = 'NVIM: ' . expand('%:t')
 endif
 autocmd BufEnter * let &titlestring = 'NeoVIM -- ' . (expand('%:t') == '' ? '[No File]' : expand('%:t'))
-autocmd VimEnter * if argc() == 0 | NERDTree C:\Users\<Username>\code | endif
+autocmd VimEnter * if argc() == 0 | NERDTree C:\Users\Jasper\code | endif
 
 
 
@@ -273,7 +303,7 @@ map <4-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
 " Quick escape mapping
-inoremap qw <Esc>
+inoremap fd <Esc>
 
 
 
