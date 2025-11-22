@@ -59,65 +59,30 @@
 " ======================================================
 call plug#begin()
 
-" --- Essentials ---
-Plug 'tpope/vim-surround'						
-	" syntaxYouSurround: ys{motion}{surround_char}
-		" {motion}: {iw} (inner word), {$)} (rest of line), {s(} (whole line), {ap} (paragraph text), {it} (inner text)  
-	" syntaxChangeSurround: cs{old}{new}
-	" syntaxDeleteSurround: ds{char}
-	" syntaxYouSurroundInVisualMode: V{char}
-Plug 'tpope/vim-commentary'                    
-	" syntaxComment: gcc
-	" syntaxCommentInVisualMode: gc
-	" syntaxCommentMotion: gc{motion}
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'     
 Plug 'preservim/nerdtree'
-	" syntaxToggleTree: <Space>/
-	" syntaxFocusTree: <Space>.
-	" syntaxMenu: m
-	" syntaxRefresh: R
-	" syntaxChangeRootDirectory: C
-	" syntaxOpenFileInNewTab: t
-	" syntaxOpenFileInHorizontalSplit: i
-	" syntaxOpenFileInVerticalSplit: s
 Plug 'itchyny/lightline.vim'          
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
-	" syntaxToggleTagbar: <Space>tb 
 Plug 'junegunn/fzf'     
 Plug 'junegunn/fzf.vim'    
-	" syntaxFileFinder: <Space>ff
-	" syntaxGitFileFinder: <Space>fg
 Plug 'navarasu/onedark.nvim'                
 Plug 'neoclide/coc.nvim', {'branch': 'release'} 
-	" LSP and Intellisense
-		"JavaScript
-	  	"TypeScript
-		"JSX/TSX
 Plug 'tpope/vim-fugitive'                      
-	" Git Integration
 Plug 'matze/vim-move'                          
-	" syntaxMoveUpInNormalAndVisualMode: <Alt>k
-	" syntaxMoveDownInNormalAndVisualMode: <Alt>j
 Plug 'voldikss/vim-floaterm'
-	" syntaxToggleFloaterm: <F6>
 Plug 'alvan/vim-closetag'                      
-	" Auto close HTML tags
 Plug 'windwp/nvim-autopairs'
-	" Autopairs
 Plug 'NvChad/nvim-colorizer.lua'
-	" Colorizer for styling
 Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim'
-	" TODO: and others comments color
-	" FIXME:
-	" NOTE:
 
-" --- Language Specific ---
-Plug 'pangloss/vim-javascript'                 " JavaScript syntax
-Plug 'maxmellon/vim-jsx-pretty'               " JSX syntax
-Plug 'HerringtonDarkholme/yats.vim'           " TypeScript syntax
-Plug 'leafgarland/typescript-vim'             " TypeScript support
-Plug 'peitalin/vim-jsx-typescript'            " TSX highlighting
+Plug 'pangloss/vim-javascript'                 
+Plug 'maxmellon/vim-jsx-pretty'               
+Plug 'HerringtonDarkholme/yats.vim'           
+Plug 'leafgarland/typescript-vim'             
+Plug 'peitalin/vim-jsx-typescript'            
 
 call plug#end()
 
