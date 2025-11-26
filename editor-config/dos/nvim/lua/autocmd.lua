@@ -65,6 +65,23 @@ local function start_menu()
         "   ..^II+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     ====================================="
     })
 
+	
+    vim.cmd([[
+		syntax match AsciiArt /[{}Z\[\]@#.^<$\*0~!:+]/
+        syntax match MenuTitle /NeoVIM -- Menu.*/
+        syntax match MenuSection /Manage project at the right side:/
+        syntax match MenuSection /Using fzf:/
+        syntax match MenuSection /Keybindings:/
+        syntax match MenuKey /\[.*\]/
+        syntax match MenuDivider /===*/
+
+		highlight AsciiArt guifg=#a19667 ctermfg=255
+        highlight MenuTitle guifg=#a18267 ctermfg=204 gui=bold
+        highlight MenuSection guifg=#8dbce3 ctermfg=75
+        highlight MenuKey guifg=#a19667 ctermfg=114
+        highlight MenuDivider guifg=#ffffff ctermfg=240
+    ]])
+
     vim.cmd('file MENU')
     vim.bo.modifiable = false
     vim.cmd('silent! vertical rightbelow NERDTree')

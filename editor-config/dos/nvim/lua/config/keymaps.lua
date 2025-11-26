@@ -4,9 +4,9 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 
 map("n", "<leader>w", ":w<CR>", opts)   -- Save File
-map("n", "<leader>W", ":ww<CR>", opts)	-- Save All File
+map("n", "<leader>z", ":wa<CR>", opts)	-- Save All File
 map("n", "<leader>q", ":q<CR>", opts)	-- Quit File
-map("n", "<leader>qa", ":qq<CR>", opts) -- Quit All Files
+map("n", "<leader>qq", ":qa<CR>", opts) -- Quit All Files
 
 map("n", "<Leader>.", ":NERDTreeFocus<CR>", opts)	-- Focus Tree
 map("n", "<C-n>", ":NERDTree<CR>", opts)			

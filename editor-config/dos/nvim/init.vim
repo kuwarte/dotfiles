@@ -1,4 +1,3 @@
-                          
                                    "`)@@hr>`.                                        
                                    ".+$@@@@p);.                                      
                                    ".>a@$B@@@BC~`.                                   
@@ -59,30 +58,66 @@
 " ======================================================
 call plug#begin()
 
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'     
+" --- Essentials ---
+Plug 'tpope/vim-surround'						
+	" syntaxYouSurround: ys{motion}{surround_char}
+		" {motion}: {iw} (inner word), {$)} (rest of line), {s(} (whole line), {ap} (paragraph text), {it} (inner text)  
+	" syntaxChangeSurround: cs{old}{new}
+	" syntaxDeleteSurround: ds{char}
+	" syntaxYouSurroundInVisualMode: V{char}
+Plug 'tpope/vim-commentary'                    
+	" syntaxComment: gcc
+	" syntaxCommentInVisualMode: gc
+	" syntaxCommentMotion: gc{motion}
 Plug 'preservim/nerdtree'
+	" syntaxToggleTree: <Space>/
+	" syntaxFocusTree: <Space>.
+	" syntaxMenu: m
+	" syntaxRefresh: R
+	" syntaxChangeRootDirectory: C
+	" syntaxOpenFileInNewTab: t
+	" syntaxOpenFileInHorizontalSplit: i
+	" syntaxOpenFileInVerticalSplit: s
 Plug 'itchyny/lightline.vim'          
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
+	" syntaxToggleTagbar: <Space>tb 
 Plug 'junegunn/fzf'     
 Plug 'junegunn/fzf.vim'    
-Plug 'navarasu/onedark.nvim'                
+	" syntaxFileFinder: <Space>ff
+	" syntaxGitFileFinder: <Space>fg
+" Plug 'navarasu/onedark.nvim'
+Plug 'rose-pine/neovim', { 'as': 'rose-pine' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+	" LSP and Intellisense
+		"JavaScript
+	  	"TypeScript
+		"JSX/TSX
 Plug 'tpope/vim-fugitive'                      
+	" Git Integration
 Plug 'matze/vim-move'                          
+	" syntaxMoveUpInNormalAndVisualMode: <Alt>k
+	" syntaxMoveDownInNormalAndVisualMode: <Alt>j
 Plug 'voldikss/vim-floaterm'
+	" syntaxToggleFloaterm: <F6>
 Plug 'alvan/vim-closetag'                      
+	" Auto close HTML tags
 Plug 'windwp/nvim-autopairs'
+	" Autopairs
 Plug 'NvChad/nvim-colorizer.lua'
+	" Colorizer for styling
 Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim'
+	" TODO: and others comments color
+	" FIXME:
+	" NOTE:
 
-Plug 'pangloss/vim-javascript'                 
-Plug 'maxmellon/vim-jsx-pretty'               
-Plug 'HerringtonDarkholme/yats.vim'           
-Plug 'leafgarland/typescript-vim'             
-Plug 'peitalin/vim-jsx-typescript'            
+" --- Language Specific ---
+Plug 'pangloss/vim-javascript'                 " JavaScript syntax
+Plug 'maxmellon/vim-jsx-pretty'               " JSX syntax
+Plug 'HerringtonDarkholme/yats.vim'           " TypeScript syntax
+Plug 'leafgarland/typescript-vim'             " TypeScript support
+Plug 'peitalin/vim-jsx-typescript'            " TSX highlighting
 
 call plug#end()
 
@@ -90,9 +125,11 @@ lua require("config.colorizer")
 lua require("config.autopairs")
 lua require("config.keymaps")
 lua require("config.todo-comments")
-lua require("config.onedark")
+" lua require("config.onedark")
+lua require("config.rosepine")
 lua require("config.nerdtree")
 lua require("autocmd")
+
 
 
 
@@ -145,16 +182,17 @@ let g:lightline#bufferline#unnamed      = '[No Name]'
 
 set laststatus=2
 let g:lightline = {
-	  \ 'colorscheme': 'rosepine',
+	  \ 'colorscheme': 'simpleblack',
       \ 'active': {
       \   'left': [
       \       [ 'mode', 'paste' ],
-	  \		  [ 'gitbranch', 'readonly', 'buffers' ]
+	  \		  [ 'gitbranch', 'readonly','buffers' ]
       \   ],
       \   'right': [
-	  \       [ 'lineinfo' ],
-	  \       [ 'percent' ],
-	  \		  [ 'fileformat', 'fileencoding', 'filetype' ],
+	  \       [ ],
+	  \       [ ],
+	  \		  [ ],
+	  \       ['filename', 'fileformat', 'fileencoding', 'filetype', 'percent', 'lineinfo']
       \   ]
       \ },
       \ 'tabline': {
@@ -173,9 +211,47 @@ let g:lightline = {
       \ }
       \ }
 
+function! LightlineBufferDirPath()
+    if expand('%:p') == ''
+        return '[No File]'
+    endif
+    let l:dir = fnamemodify(expand('%:p'), ':.:h')
+    if l:dir == ''
+        return '/'
+    endif
+    return '[ ' . l:dir . '\% ]'
+endfunction
+let g:lightline['component_function']['filename'] = 'LightlineBufferDirPath'
+
+
+function! LightlineFileFormat()
+    if winwidth(0) < 100
+        return ''
+    endif
+    return &fileformat
+endfunction
+
+function! LightlineFileEncoding()
+    if winwidth(0) < 100
+        return ''
+    endif
+    return &fileencoding
+endfunction
+
+function! LightlineFileType()
+    if winwidth(0) < 100
+        return ''
+    endif
+    return &filetype
+endfunction
+
+let g:lightline['component_function']['fileformat'] = 'LightlineFileFormat'
+let g:lightline['component_function']['fileencoding'] = 'LightlineFileEncoding'
+let g:lightline['component_function']['filetype'] = 'LightlineFileType'
+
 function! LightlineBufferlineMaxWidth() 
 	return 6 
-endfunction 
+endfunction
 
 let g:lightline#bufferline#max_width = 'LightlineBufferlineMaxWidth' 
 let g:lightline.component_expand.buffers = 'lightline#bufferline#buffers' 
@@ -184,7 +260,7 @@ let g:lightline#bufferline#more_buffers = '...'
 
 let g:lightline#bufferline#composed_ordinal_number_map = {}
 for i in range(1, 30)
-	let g:lightline#bufferline#composed_ordinal_number_map[i] = '//' . i . '//'
+	let g:lightline#bufferline#composed_ordinal_number_map[i] = '[ ' . i . ' ]'
 endfor
 
 function! LightlineBufferlineDynamicNumbers()
