@@ -46,15 +46,13 @@
                 ".)o@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
 	
 " |==================================== == NeoVIM Config
-"
-" Installation of vim-plug
-"	
-"	iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | `
-"		ni "$env:LOCALAPPDATA\nvim-data\site\autoload\plug.vim" -Force
-" 
-"
 " ======================================================
-" Plugins
+" Plugins: use VimPlug
+"
+" NOTE: add this config to ~/.config/nvim/
+"
+" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
 " ======================================================
 call plug#begin()
 
@@ -86,9 +84,8 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'    
 	" syntaxFileFinder: <Space>ff
 	" syntaxGitFileFinder: <Space>fg
-" Plug 'navarasu/onedark.nvim'
 Plug 'rose-pine/neovim', { 'as': 'rose-pine' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} 
 	" LSP and Intellisense
 		"JavaScript
 	  	"TypeScript
@@ -111,21 +108,22 @@ Plug 'folke/todo-comments.nvim'
 	" TODO: and others comments color
 	" FIXME:
 	" NOTE:
-
-" --- Language Specific ---
-Plug 'pangloss/vim-javascript'                 " JavaScript syntax
-Plug 'maxmellon/vim-jsx-pretty'               " JSX syntax
-Plug 'HerringtonDarkholme/yats.vim'           " TypeScript syntax
-Plug 'leafgarland/typescript-vim'             " TypeScript support
-Plug 'peitalin/vim-jsx-typescript'            " TSX highlighting
+Plug 'mfussenegger/nvim-jdtls'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 call plug#end()
 
+lua require("config.lsp.java")
+lua require("config.cmp")
 lua require("config.colorizer")
 lua require("config.autopairs")
 lua require("config.keymaps")
 lua require("config.todo-comments")
-" lua require("config.onedark")
 lua require("config.rosepine")
 lua require("config.nerdtree")
 lua require("autocmd")
@@ -141,18 +139,10 @@ lua require("autocmd")
 
 
 " ======================================================
-" CoC Config
+" No Title
 " ======================================================
+let g:tagbar_ctags_bin = '/usr/bin/ctags'
 
-let g:tagbar_ctags_bin = 'C:/Users/<username>/AppData/Local/Microsoft/WinGet/Packages/UniversalCtags.Ctags_Microsoft.Winget.Source_8wekyb3d8bbwe/ctags.exe'
-let g:coc_user_config = {
-      \ 'tailwindCSS.includeLanguages': {
-      \   'javascript': 'javascript',
-      \   'typescript': 'typescriptreact',
-      \   'html': 'html'
-      \ },
-      \ 'tailwindCSS.emmetCompletions': v:true
-      \ }
 let g:undotree_DiffAuto = 0
 
 highlight LineNr guifg=#393744 gui=BOLD
@@ -175,6 +165,7 @@ autocmd BufEnter * let &titlestring = 'NeoVIM -- ' . (expand('%:t') == '' ? '[No
 " ======================================================
 " Status Line
 " ======================================================
+
 let g:lightline#bufferline#show_number  = 2
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#smart_path   = 1
@@ -219,7 +210,7 @@ function! LightlineBufferDirPath()
     if l:dir == ''
         return '/'
     endif
-    return '[ ' . l:dir . '\% ]'
+    return '[ ' . l:dir . '/% ]'
 endfunction
 let g:lightline['component_function']['filename'] = 'LightlineBufferDirPath'
 
@@ -278,3 +269,4 @@ function! LightlineGitBranch()
     endif
     return ''
 endfunction
+

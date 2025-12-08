@@ -48,7 +48,7 @@ map("n", "<Leader>tb", ":TagbarToggle<CR>", opts)	-- Tagbar
 -- Quick escape
 map("i", "fd", "<Esc>", opts)
 
--- COC
+-- Others
 map("n", "<F3>", ":noh<CR>", opts)	-- Rem Highlight
 
 local keys = { "<MiddleMouse>", "<2-MiddleMouse>", "<3-MiddleMouse>", "<4-MiddleMouse>" }
@@ -59,8 +59,38 @@ for _, key in ipairs(keys) do
     vim.keymap.set("v", key, "<Nop>")
 end
 
-vim.keymap.set("i", "<CR>", 'coc#pum#visible() ? coc#pum#confirm() : "\\<CR>"', { expr = true, silent = true })
+-- =========================
+-- JDTLS / Java LSP Shortcuts
+-- =========================
+-- Code actions (e.g., implement unimplemented methods, fix imports)
+map("n", "<Leader>ca", function()
+  vim.lsp.buf.code_action()
+end, opts)
 
-vim.keymap.set("i", "<Tab>", 'pumvisible() ? "\\<C-N>" : "\\<Tab>"', { expr = true, silent = true })
+-- Organize imports
+map("n", "<Leader>oi", function() require('jdtls').organize_imports() end, opts)
 
-vim.keymap.set("i", "<S-Tab>", 'pumvisible() ? "\\<C-P>" : "\\<C-H>"', { expr = true, silent = true })
+-- Rename symbol under cursor
+map("n", "<Leader>rn", function() vim.lsp.buf.rename() end, opts)
+
+-- Go to definition
+map("n", "<Leader>gd", function() vim.lsp.buf.definition() end, opts)
+
+-- Find references
+map("n", "<Leader>gr", function() vim.lsp.buf.references() end, opts)
+
+-- Show documentation / hover
+map("n", "<Leader>K", function() vim.lsp.buf.hover() end, opts)
+
+-- Go to implementation
+map("n", "<leader>gi", function() require('jdtls').goto_implementation() end, opts)
+
+-- Extract variable
+map("v", "<Leader>ev", function() require('jdtls').extract_variable(true) end, opts)
+
+-- Extract method
+map("v", "<Leader>em", function() require('jdtls').extract_method(true) end, opts)
+
+-- Compile and run main class
+map("n", "<Leader>rc", function() require('jdtls').compile() end, opts)
+map("n", "<Leader>rr", function() require('jdtls').run() end, opts)

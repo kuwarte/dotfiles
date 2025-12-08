@@ -22,13 +22,14 @@ local function start_menu()
     if vim.fn.argc() ~= 0 then return end
 
     local project_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
-    if vim.v.shell_error == 0 then
-        vim.cmd('cd ' .. vim.fn.fnameescape(project_root))
-    else
-        vim.cmd('cd C:\\Users\\<username>\\code')
-    end
-
-    vim.cmd('enew')
+	if vim.v.shell_error == 0 and project_root ~= "" then
+		vim.cmd('cd ' .. vim.fn.fnameescape(project_root))
+	else
+		local fallback = vim.fn.expand("~") .. "/code"
+		vim.cmd('cd ' .. vim.fn.fnameescape(fallback))
+	end
+    
+	vim.cmd('enew')
     vim.bo.buftype = 'nofile'
     vim.bo.bufhidden = 'wipe'
     vim.bo.swapfile = false
@@ -114,4 +115,5 @@ api.nvim_create_autocmd("BufWritePre", {
     pattern = {"*.js","*.ts","*.tsx","*.jsx","*.json","*.html","*.css"},
     command = "CocCommand prettier.formatFile"
 })
+
 

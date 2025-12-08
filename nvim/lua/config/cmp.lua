@@ -1,0 +1,35 @@
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end,
+    },
+    mapping = {
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping.select_next_item(),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    },
+    sources = cmp.config.sources({
+		{ name = "nvim_lsp", priority = 1000 },  
+		{ name = "luasnip", priority = 750 },
+		{ name = "path", priority = 500 },
+		{ name = "buffer", priority = 250 },     
+	}),
+    window = {
+        completion = cmp.config.window.bordered({
+			max_height = 8,
+            border = "rounded",    
+            winhighlight = "Normal:Panel,FloatBorder:Border,CursorLine:PmenuSel,Search:None",
+        }),
+        documentation = cmp.config.window.bordered({
+            border = "rounded",
+            winhighlight = "Normal:Panel,FloatBorder:Border,CursorLine:PmenuSel,Search:None",
+        }),
+    },
+})

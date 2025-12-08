@@ -1,6 +1,5 @@
-
 require("rose-pine").setup({
-    variant = "moon", -- auto, main, moon, or dawn
+	variant = "moon", -- auto, main, moon, or dawn
     dark_variant = "moon", -- main, moon, or dawn
     dim_inactive_windows = false,
     extend_background_behind_borders = true,
@@ -78,4 +77,13 @@ require("rose-pine").setup({
     end,
 })
 
+
+
 vim.cmd("colorscheme rose-pine-moon")
+
+vim.cmd([[
+  hi! NormalFloat guibg=#040404 guifg=#c0c0c0
+  hi! FloatBorder guibg=#040404 guifg=#5c5c5c
+  hi! FzfPreview guibg=#040404 guifg=#c0c0c0
+]])
+
