@@ -111,9 +111,18 @@ api.nvim_create_autocmd({"BufDelete", "BufWritePost", "TextChanged", "TextChange
     end
 })
 
-api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = {"*.js","*.ts","*.tsx","*.jsx","*.json","*.html","*.css"},
-    command = "CocCommand prettier.formatFile"
+    callback = function()
+		vim.bo.shiftwidth = 2
+        vim.bo.tabstop = 2
+        vim.bo.softtabstop = 2
+
+        vim.lsp.buf.format({
+            async = false,   
+            timeout_ms = 2000,
+        })
+    end
 })
 
 

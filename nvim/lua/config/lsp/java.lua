@@ -1,3 +1,17 @@
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  severity_sort = true,
+})
+
+vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false })
+  end,
+})
+
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "java",
   callback = function()
@@ -5,7 +19,8 @@ vim.api.nvim_create_autocmd("FileType", {
     local home = os.getenv("HOME")
 
     local root_files = { ".git", "mvnw", "gradlew", "pom.xml" }
-    local root_dir = require("jdtls.setup").find_root(root_files)
+    -- local root_dir = require("jdtls.setup").find_root(root_files)
+	local root_dir = vim.loop.cwd()
 
     if root_dir == nil or root_dir == "" then
       return

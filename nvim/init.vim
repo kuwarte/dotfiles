@@ -48,11 +48,7 @@
 " |==================================== == NeoVIM Config
 " ======================================================
 " Plugins: use VimPlug
-"
-" NOTE: add this config to ~/.config/nvim/
-"
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"
 " ======================================================
 call plug#begin()
 
@@ -85,11 +81,6 @@ Plug 'junegunn/fzf.vim'
 	" syntaxFileFinder: <Space>ff
 	" syntaxGitFileFinder: <Space>fg
 Plug 'rose-pine/neovim', { 'as': 'rose-pine' }
-" Plug 'neoclide/coc.nvim', {'branch': 'release'} 
-	" LSP and Intellisense
-		"JavaScript
-	  	"TypeScript
-		"JSX/TSX
 Plug 'tpope/vim-fugitive'                      
 	" Git Integration
 Plug 'matze/vim-move'                          
@@ -115,10 +106,12 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
 lua require("config.lsp.java")
+lua require("config.lsp.setup")
 lua require("config.cmp")
 lua require("config.colorizer")
 lua require("config.autopairs")

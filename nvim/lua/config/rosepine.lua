@@ -87,3 +87,9 @@ vim.cmd([[
   hi! FzfPreview guibg=#040404 guifg=#c0c0c0
 ]])
 
+vim.cmd([[
+  hi javaType guifg=#f6c177 gui=italic
+
+  hi javaAnnotation guifg=#8be9fd gui=italic
+]])
+
