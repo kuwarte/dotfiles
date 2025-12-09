@@ -1,11 +1,11 @@
 #!/bin/bash
 # init-nvim.sh
 # ----------------------------
-# Initialize your Neovim configuration from your dotfiles repository.
+# Initialize your Neovim configuration from my dotfiles repository.
 #
 # This script will:
 # 1. Backup your existing Neovim config (~/.config/nvim)
-# 2. Copy your nvim config from the dotfiles repo into ~/.config/nvim
+# 2. Copy my nvim config from the dotfiles repo into ~/.config/nvim
 # 3. Ensure vim-plug is installed
 #
 # Requirements:
