@@ -50,7 +50,8 @@
 " Plugins: use VimPlug
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " ======================================================
-call plug#begin()
+
+call plug#begin(stdpath('data') . '/plugged')
 
 " --- Essentials ---
 Plug 'tpope/vim-surround'						
@@ -88,7 +89,8 @@ Plug 'matze/vim-move'
 	" syntaxMoveDownInNormalAndVisualMode: <Alt>j
 Plug 'voldikss/vim-floaterm'
 	" syntaxToggleFloaterm: <F6>
-Plug 'alvan/vim-closetag'                      
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'windwp/nvim-ts-autotag'
 	" Auto close HTML tags
 Plug 'windwp/nvim-autopairs'
 	" Autopairs
@@ -106,20 +108,68 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lspconfig', { 'tag': 'v1.4.0' }
 
 call plug#end()
 
-lua require("config.lsp.java")
-lua require("config.lsp.setup")
-lua require("config.cmp")
-lua require("config.colorizer")
-lua require("config.autopairs")
-lua require("config.keymaps")
-lua require("config.todo-comments")
-lua require("config.rosepine")
-lua require("config.nerdtree")
-lua require("autocmd")
+set nocompatible
+set hidden
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+set cmdheight=2
+set pumheight=10
+set conceallevel=0
+set fileencoding=utf-8
+set ruler
+set iskeyword+=-
+set mouse=a
+set splitbelow
+set splitright
+set t_Co=256
+set tabstop=2
+set shiftwidth=2
+set smarttab
+set expandtab
+set smartindent
+set autoindent
+set laststatus=2
+set number
+set relativenumber
+set nocursorline
+set background=dark
+set noshowmode
+set nobackup
+set nowritebackup
+set noswapfile
+set clipboard=unnamedplus
+set scrolloff=8
+set sidescrolloff=8
+
+syntax enable
+filetype plugin indent on
+
+lua require('init')
+
+" ======================================================
+" FZF Configuration
+" ======================================================
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 
 
@@ -145,6 +195,9 @@ if has("title")
     let &titlestring = 'NVIM: ' . expand('%:t')
 endif
 autocmd BufEnter * let &titlestring = 'NeoVIM -- ' . (expand('%:t') == '' ? '[No File]' : expand('%:t'))
+
+
+
 
 
 

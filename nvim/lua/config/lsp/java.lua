@@ -1,36 +1,57 @@
 vim.diagnostic.config({
-  virtual_text = true,
+  virtual_text = {
+    enabled = true,
+    severity = { min = vim.diagnostic.severity.WARN },
+  },
   signs = true,
   underline = true,
   severity_sort = true,
+  update_in_insert = false,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "if_many",
+    header = "",
+    prefix = "",
+  },
 })
-
-vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
-  callback = function()
-    vim.diagnostic.open_float(nil, { focus = false })
-  end,
-})
-
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "java",
   callback = function()
-    local jdtls = require("jdtls")
-    local home = os.getenv("HOME")
-
-    local root_files = { ".git", "mvnw", "gradlew", "pom.xml" }
-    -- local root_dir = require("jdtls.setup").find_root(root_files)
-	local root_dir = vim.loop.cwd()
-
-    if root_dir == nil or root_dir == "" then
+    local ok_jdtls, jdtls = pcall(require, "jdtls")
+    if not ok_jdtls then
       return
+    end
+    
+    local home = os.getenv("HOME")
+    if not home then
+      return
+    end
+
+    local root_files = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+    local root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1])
+    
+    if not root_dir then
+      root_dir = vim.loop.cwd()
     end
 
     local workspace = home .. "/.local/share/nvim/java/" ..
       vim.fn.fnamemodify(root_dir, ":p:h:t")
 
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local ok_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+    if ok_cmp then
+      capabilities = cmp_lsp.default_capabilities(capabilities)
+    end
+
+    local jdtls_path = home .. "/.local/share/jdtls"
+    local launcher_jar = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
+    
+    if launcher_jar == "" then
+      return
+    end
 
     local cmd = {
       "java",
@@ -40,31 +61,41 @@ vim.api.nvim_create_autocmd("FileType", {
       "-Dlog.protocol=true",
       "-Dlog.level=ALL",
       "-Xmx1G",
-      "-jar", home .. "/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar",
-      "-configuration", home .. "/.local/share/jdtls/config_linux",
+      "-jar", launcher_jar,
+      "-configuration", jdtls_path .. "/config_linux",
       "-data", workspace
     }
 
     local config = {
       cmd = cmd,
       root_dir = root_dir,
-	  capabilities = capabilities,
+      capabilities = capabilities,
       settings = {
         java = {
-		  project = {
-			sourcePaths = {"src/main/java"}
-		  },
+          project = {
+            sourcePaths = {"src/main/java", "src/test/java"}
+          },
           eclipse = { downloadSources = true },
           configuration = { updateBuildConfiguration = "interactive" },
           maven = { downloadSources = true },
           implementationsCodeLens = { enabled = true },
           referencesCodeLens = { enabled = true },
           references = { includeDecompiledSources = true },
+          format = {
+            enabled = true,
+            settings = {
+              url = vim.fn.stdpath("config") .. "/lang-servers/intellij-java-google-style.xml",
+              profile = "GoogleStyle",
+            },
+          },
         }
       },
       init_options = {
         bundles = {}
-      }
+      },
+      on_attach = function(client, bufnr)
+        jdtls.setup_dap({ hotcodereplace = 'auto' })
+      end,
     }
 
     jdtls.start_or_attach(config)

@@ -1,4 +1,3 @@
-
 local api = vim.api
 
 vim.o.scrolloff = 5
@@ -54,7 +53,7 @@ local function start_menu()
         "   .:m@@@@@@@@MOQM@@@pXh@@@@@@@@@@@@@@@@@@@     [ <leader>qa ] Exit                  ",
         "   ..<*@@@@@@@$MdObZdZo#Mz!.._w$@@@@@@@@@@@     =====================================",
         "   'XCh@@@@@@@@kXM0v@00@f'>[: ,Z@@@@@@@@@@@     Using fzf:                           ",
-        "     ^c@@@@@@@*Zw#@@@@@@z;.{~'_b@@@@@@@@@@@     [ <leader>ff ] Find Files            ",
+        "     ^c@@@@@@@*Zw#@@@@@@z;.{~'_b@@@@@@@@@@@     [ <leader>, ] Find Files             ",
         "   ..<a@@@@@#|'``'{#@@@@@ati]O$@@@@@@@@@@@@     [ <leader>fg ] Find Git Files        ",
         "   -o@@@@@@BY .</.'t@@@@@@@@@@@@@@@@@@@@@@@     [ <leader>fb ] Find Buffer Files     ",
         "    .'t@@@@@h_..^,_b@@@@@@@@@@@@@@@@@@@@@@@     =====================================",
@@ -66,7 +65,6 @@ local function start_menu()
         "   ..^II+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     ====================================="
     })
 
-	
     vim.cmd([[
 		syntax match AsciiArt /[{}Z\[\]@#.^<$\*0~!:+]/
         syntax match MenuTitle /NeoVIM -- Menu.*/
@@ -111,18 +109,26 @@ api.nvim_create_autocmd({"BufDelete", "BufWritePost", "TextChanged", "TextChange
     end
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = {"*.js","*.ts","*.tsx","*.jsx","*.json","*.html","*.css"},
-    callback = function()
-		vim.bo.shiftwidth = 2
-        vim.bo.tabstop = 2
-        vim.bo.softtabstop = 2
-
-        vim.lsp.buf.format({
-            async = false,   
-            timeout_ms = 2000,
-        })
+api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+    pattern = {"*.tsx", "*.jsx", "*.js", "*.ts"},
+    callback = function(args)
+        if args.match:match("%.tsx$") then
+            vim.bo.filetype = "typescriptreact"
+        elseif args.match:match("%.jsx$") then
+            vim.bo.filetype = "javascriptreact"
+        elseif args.match:match("%.ts$") then
+            vim.bo.filetype = "typescript"
+        elseif args.match:match("%.js$") then
+            vim.bo.filetype = "javascript"
+        end
+        
+        print("Filetype set to: " .. vim.bo.filetype)
     end
 })
 
-
+api.nvim_create_autocmd("InsertCharPre", {
+    pattern = {"*.tsx", "*.jsx"},
+    callback = function()
+        print("InsertCharPre in React file, filetype: " .. vim.bo.filetype)
+    end
+})

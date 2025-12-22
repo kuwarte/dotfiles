@@ -1,13 +1,13 @@
 require("rose-pine").setup({
-	variant = "moon", -- auto, main, moon, or dawn
-    dark_variant = "moon", -- main, moon, or dawn
+	variant = "moon",
+    dark_variant = "moon",
     dim_inactive_windows = false,
     extend_background_behind_borders = true,
 
     enable = {
         terminal = true,
-        legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-        migrations = true, -- Handle deprecated options automatically
+        legacy_highlights = true,
+        migrations = true,
     },
 
     styles = {
@@ -48,36 +48,18 @@ require("rose-pine").setup({
     },
 
     palette = {
-        -- Override the builtin palette per variant
         moon = {
 			base = '#040404',
 			overlay = '#363738',
         },
     },
 
-	-- NOTE: Highlight groups are extended (merged) by default. Disable this
-	-- per group via `inherit = false`
     highlight_groups = {
-        -- Comment = { fg = "foam" },
-        -- StatusLine = { fg = "love", bg = "love", blend = 15 },
-        -- VertSplit = { fg = "muted", bg = "muted" },
-        -- Visual = { fg = "base", bg = "text", inherit = false },
     },
 
     before_highlight = function(group, highlight, palette)
-        -- Disable all undercurls
-        -- if highlight.undercurl then
-        --     highlight.undercurl = false
-        -- end
-        --
-        -- Change palette colour
-        -- if highlight.fg == palette.pine then
-        --     highlight.fg = palette.foam
-        -- end
     end,
 })
-
-
 
 vim.cmd("colorscheme rose-pine-moon")
 
@@ -89,7 +71,6 @@ vim.cmd([[
 
 vim.cmd([[
   hi javaType guifg=#f6c177 gui=italic
-
   hi javaAnnotation guifg=#8be9fd gui=italic
 ]])
 
