@@ -8,9 +8,9 @@ map("n", "<leader>z", ":wa<CR>", opts)
 map("n", "<leader>q", ":q<CR>", opts)
 map("n", "<leader>qq", ":qa<CR>", opts)
 
-map("n", "<Leader>.", ":NERDTreeFocus<CR>", opts)
-map("n", "<C-n>", ":NERDTree<CR>", opts)
-map("n", "<Leader>/", ":NERDTreeToggle<CR>", opts)
+map("n", "<Leader>.", ":NvimTreeFocus<CR>", opts)
+map("n", "<C-n>", ":NvimTreeOpen<CR>", opts)
+map("n", "<Leader>/", ":NvimTreeToggle<CR>", opts)
 map("n", "<C-l>", ":UndotreeToggle<CR>", opts)
 
 map("n", "<Leader>1", "<Plug>lightline#bufferline#go(1)", {})
@@ -29,10 +29,10 @@ map("n", "<Leader>mbn", "<Plug>lightline#bufferline#move_next()", {})
 map("n", "<Leader>mbp", "<Plug>lightline#bufferline#move_previous()", {})
 map("n", "<leader>db", ":bnext<bar>bd#<CR>", opts)
 
-map("n", "<Leader>,", ":Files<CR>", opts)
-map("n", "<Leader>fb", ":Buffers<CR>", opts)
-map("n", "<Leader>fg", ":GFiles<CR>", opts)
-map("n", "<Leader>ft", ":Tags<CR>", opts)
+map("n", "<Leader>,", "<cmd>Telescope find_files<CR>", opts)
+map("n", "<Leader>fb", "<cmd>Telescope buffers<CR>", opts)
+map("n", "<Leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+map("n", "<Leader>ft", "<cmd>Telescope tags<CR>", opts)
 
 map("t", "<F6>", [[<C-\><C-n>:FloatermToggle<CR>]], opts)
 map("n", "<F6>", ":FloatermToggle<CR>", opts)
@@ -76,3 +76,5 @@ map("v", "<Leader>em", function() require('jdtls').extract_method(true) end, opt
 
 map("n", "<Leader>rc", function() require('jdtls').compile() end, opts)
 map("n", "<Leader>rr", function() require('jdtls').run() end, opts)
+
+map("n", "<Leader>gg", ":lua _LAZYGIT_TOGGLE() <CR>", opts)

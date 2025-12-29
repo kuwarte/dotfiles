@@ -16,8 +16,10 @@ local modules = {
   "config.keymaps",
   "config.todo-comments",
   "config.rosepine",
-  "config.nerdtree",
+  "config.nvim-tree",
   "config.treesitter",
+  "config.lazygit",
+  "config.telescope",
   "autocmd"
 }
 

@@ -64,21 +64,14 @@ Plug 'tpope/vim-commentary'
 	" syntaxComment: gcc
 	" syntaxCommentInVisualMode: gc
 	" syntaxCommentMotion: gc{motion}
-Plug 'preservim/nerdtree'
-	" syntaxToggleTree: <Space>/
-	" syntaxFocusTree: <Space>.
-	" syntaxMenu: m
-	" syntaxRefresh: R
-	" syntaxChangeRootDirectory: C
-	" syntaxOpenFileInNewTab: t
-	" syntaxOpenFileInHorizontalSplit: i
-	" syntaxOpenFileInVerticalSplit: s
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'itchyny/lightline.vim'          
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
 	" syntaxToggleTagbar: <Space>tb 
 Plug 'junegunn/fzf'     
 Plug 'junegunn/fzf.vim'    
+Plug 'nvim-telescope/telescope.nvim', { 'tag': 'v0.2.0' }
 	" syntaxFileFinder: <Space>ff
 	" syntaxGitFileFinder: <Space>fg
 Plug 'rose-pine/neovim', { 'as': 'rose-pine' }
@@ -88,6 +81,7 @@ Plug 'matze/vim-move'
 	" syntaxMoveUpInNormalAndVisualMode: <Alt>k
 	" syntaxMoveDownInNormalAndVisualMode: <Alt>j
 Plug 'voldikss/vim-floaterm'
+Plug 'akinsho/toggleterm.nvim'
 	" syntaxToggleFloaterm: <F6>
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'windwp/nvim-ts-autotag'
@@ -154,7 +148,7 @@ lua require('init')
 " ======================================================
 " FZF Configuration
 " ======================================================
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0, 'border': 'single' } }
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
@@ -187,6 +181,18 @@ let g:fzf_colors = {
 let g:tagbar_ctags_bin = '/usr/bin/ctags'
 
 let g:undotree_DiffAuto = 0
+let g:NERDTreeGitStatusUseNerdFonts = 0
+
+let g:NERDTreeGitStatusIndicatorMap = {
+      \ 'Modified'  : 'M',
+      \ 'Staged'    : 'S',
+      \ 'Untracked' : '?',
+      \ 'Renamed'   : 'R',
+      \ 'Deleted'   : 'D',
+      \ 'Dirty'     : '!',
+      \ 'Clean'     : 'C',
+      \ 'Unknown'   : 'U',
+      \ }
 
 highlight LineNr guifg=#393744 gui=BOLD
 
