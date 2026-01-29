@@ -1,7 +1,12 @@
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
-    width = 40,
+    width = function()
+    if vim.o.columns < 120 then
+      return 30
+    end
+    return 40
+  end,
     side = "right",
     float = {
       enable = true,
@@ -104,4 +109,9 @@ vim.cmd([[
   highlight NvimTreeGitNew guifg=#ffd43b ctermfg=yellow gui=italic cterm=italic
   highlight NvimTreeGitDeleted guifg=#ff8787 ctermfg=red gui=italic cterm=italic
   highlight NvimTreeGitIgnored guifg=#868e96 ctermfg=gray gui=italic cterm=italic
+]])
+
+vim.cmd([[
+  highlight NormalFloat guibg=NONE guifg=#c0c0c0
+  highlight FloatBorder guibg=NONE guifg=#6e6a86
 ]])

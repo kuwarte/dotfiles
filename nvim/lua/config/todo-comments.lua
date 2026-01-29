@@ -1,6 +1,6 @@
 local ok, todo = pcall(require, "todo-comments")
 if not ok then
-  vim.notify("todo-comments plugin not found", vim.log.levels.WARN)
+  vim.notify("`todo-comments` PLUGIN NOT FOUND", vim.log.levels.WARN)
   return
 end
 
@@ -26,7 +26,7 @@ todo.setup({
 local function safe_keymap(mode, lhs, rhs, opts)
   local success, err = pcall(vim.keymap.set, mode, lhs, rhs, opts)
   if not success then
-    vim.notify("Failed to set keymap " .. lhs .. ": " .. err, vim.log.levels.ERROR)
+    vim.notify("FAILED TO SET KEYMAP `" .. lhs .. "`: " .. err, vim.log.levels.ERROR)
   end
 end
 

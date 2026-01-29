@@ -3,6 +3,10 @@ local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
 
+vim.keymap.set("n", "<F2>", function()
+  vim.cmd([[%s/\r//g]])
+end, { desc = "Remove ^M (CRLF -> LF)" })
+
 map("n", "<leader>w", ":w<CR>", opts)
 map("n", "<leader>z", ":wa<CR>", opts)
 map("n", "<leader>q", ":q<CR>", opts)
@@ -34,11 +38,16 @@ map("n", "<Leader>fb", "<cmd>Telescope buffers<CR>", opts)
 map("n", "<Leader>fg", "<cmd>Telescope live_grep<CR>", opts)
 map("n", "<Leader>ft", "<cmd>Telescope tags<CR>", opts)
 
-map("t", "<F6>", [[<C-\><C-n>:FloatermToggle<CR>]], opts)
-map("n", "<F6>", ":FloatermToggle<CR>", opts)
-vim.g.floaterm_keymap_new  = "<F7>"
-vim.g.floaterm_keymap_prev = "<F8>"
-vim.g.floaterm_keymap_next = "<F9>"
+map("n", "<leader>h", "<C-w>h", opts)
+map("n", "<leader>j", "<C-w>j", opts)
+map("n", "<leader>k", "<C-w>k", opts)
+map("n", "<leader>l", "<C-w>l", opts)
+
+-- map("t", "<F6>", [[<C-\><C-n>:FloatermToggle<CR>]], opts)
+-- map("n", "<F6>", ":FloatermToggle<CR>", opts)
+-- vim.g.floaterm_keymap_new  = "<F7>"
+-- vim.g.floaterm_keymap_prev = "<F8>"
+-- vim.g.floaterm_keymap_next = "<F9>"
 
 map("n", "<Leader>tb", ":TagbarToggle<CR>", opts)
 

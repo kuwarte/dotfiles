@@ -7,7 +7,8 @@ treesitter_configs.setup({
   ensure_installed = {
     "c", "lua", "vim", "vimdoc", "query", 
     "javascript", "typescript", "python", "java",
-    "tsx", "jsx", "html", "css", "json", "yaml"
+    "tsx", "jsx", "html", "css", "json", "yaml",
+    "solidity"
   },
   sync_install = false,
   auto_install = true,

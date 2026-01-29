@@ -56,9 +56,19 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+git_branch() {
+  local b
+  b=$(git branch --show-current 2>/dev/null) || return
+  [[ -n $b ]] && printf "\033[37m(\033[32m%s\033[37m)" "$b"
+}
+
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}[\[\033[01;32m\]\u\[\033[23;00m\]]\[$(git_branch)\]\[\033[0m\]~>(\[\033[01;34m\]\w\[\033[0m\])\n> '
+    # PS1='${debian_chroot:+($debian_chroot)}[\[\033[3;01;32m\]root\[\033[23;00m\]]\[$(git_branch)\]\[\033[0m\]~>(\[\033[01;34m\]\w\[\033[0m\])\n> '
 else
+    # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
@@ -120,3 +130,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+clear

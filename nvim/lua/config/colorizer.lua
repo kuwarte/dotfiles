@@ -1,6 +1,6 @@
 local ok, colorizer = pcall(require, "colorizer")
 if not ok then
-  vim.notify("nvim-colorizer not found", vim.log.levels.WARN)
+  vim.notify("`nvim-colorizer` NOT FOUND", vim.log.levels.WARN)
   return
 end
 

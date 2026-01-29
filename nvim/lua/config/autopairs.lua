@@ -1,6 +1,6 @@
 local ok_npairs, npairs = pcall(require, "nvim-autopairs")
 if not ok_npairs then
-  vim.notify("nvim-autopairs not found", vim.log.levels.WARN)
+  vim.notify("`nvim-autopairs` NOT FOUND", vim.log.levels.WARN)
   return
 end
 
@@ -8,7 +8,7 @@ local ok_rule, Rule = pcall(require, 'nvim-autopairs.rule')
 local ok_cond, cond = pcall(require, 'nvim-autopairs.conds')
 
 if not ok_rule or not ok_cond then
-  vim.notify("nvim-autopairs components not found", vim.log.levels.WARN)
+  vim.notify("`nvim-autopairs` COMPONENTS NOT FOUND", vim.log.levels.WARN)
   return
 end
 

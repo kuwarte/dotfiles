@@ -49,7 +49,7 @@ require("rose-pine").setup({
 
     palette = {
         moon = {
-			base = '#040404',
+			base = '#000000',
 			overlay = '#363738',
         },
     },
@@ -64,9 +64,9 @@ require("rose-pine").setup({
 vim.cmd("colorscheme rose-pine-moon")
 
 vim.cmd([[
-  hi! NormalFloat guibg=#040404 guifg=#c0c0c0
-  hi! FloatBorder guibg=#040404 guifg=#5c5c5c
-  hi! FzfPreview guibg=#040404 guifg=#c0c0c0
+  hi! NormalFloat guibg=NONE guifg=#c0c0c0
+  hi! FloatBorder guibg=NONE guifg=#5c5c5c
+  hi! FzfPreview guibg=NONE guifg=#c0c0c0
 ]])
 
 vim.cmd([[

@@ -2,12 +2,12 @@ local ok_cmp, cmp = pcall(require, "cmp")
 local ok_luasnip, luasnip = pcall(require, "luasnip")
 
 if not ok_cmp then
-  vim.notify("nvim-cmp not found", vim.log.levels.ERROR)
+  vim.notify("`nvim-cmp` NOT FOUND", vim.log.levels.ERROR)
   return
 end
 
 if not ok_luasnip then
-  vim.notify("LuaSnip not found", vim.log.levels.ERROR)
+  vim.notify("`LuaSnip` NOT FOUND", vim.log.levels.ERROR)
   return
 end
 
@@ -58,11 +58,3 @@ cmp.setup({
     },
 })
 
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})

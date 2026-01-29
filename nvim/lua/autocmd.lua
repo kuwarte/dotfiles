@@ -85,6 +85,11 @@ local function start_menu()
     ]])
 
     vim.cmd('file MENU')
+     vim.schedule(function()
+        vim.cmd("NvimTreeOpen")
+        vim.cmd("NvimTreeFocus")
+    end)
+
     vim.bo.modifiable = false
 end
 
@@ -110,26 +115,3 @@ api.nvim_create_autocmd({"BufDelete", "BufWritePost", "TextChanged", "TextChange
     end
 })
 
-api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-    pattern = {"*.tsx", "*.jsx", "*.js", "*.ts"},
-    callback = function(args)
-        if args.match:match("%.tsx$") then
-            vim.bo.filetype = "typescriptreact"
-        elseif args.match:match("%.jsx$") then
-            vim.bo.filetype = "javascriptreact"
-        elseif args.match:match("%.ts$") then
-            vim.bo.filetype = "typescript"
-        elseif args.match:match("%.js$") then
-            vim.bo.filetype = "javascript"
-        end
-        
-        print("Filetype set to: " .. vim.bo.filetype)
-    end
-})
-
-api.nvim_create_autocmd("InsertCharPre", {
-    pattern = {"*.tsx", "*.jsx"},
-    callback = function()
-        print("InsertCharPre in React file, filetype: " .. vim.bo.filetype)
-    end
-})

@@ -103,6 +103,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'neovim/nvim-lspconfig', { 'tag': 'v1.4.0' }
+Plug 'stevearc/conform.nvim'
 
 call plug#end()
 
@@ -111,7 +112,7 @@ set hidden
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-set cmdheight=2
+set cmdheight=1
 set pumheight=10
 set conceallevel=0
 set fileencoding=utf-8
@@ -266,26 +267,20 @@ function! LightlineBufferDirPath()
 endfunction
 let g:lightline['component_function']['filename'] = 'LightlineBufferDirPath'
 
+if !has_key(g:lightline, 'component_function')
+    let g:lightline['component_function'] = {}
+endif
 
 function! LightlineFileFormat()
-    if winwidth(0) < 100
-        return ''
-    endif
-    return &fileformat
+    return winwidth(0) >= 100 ? &fileformat : ''
 endfunction
 
 function! LightlineFileEncoding()
-    if winwidth(0) < 100
-        return ''
-    endif
-    return &fileencoding
+    return winwidth(0) >= 100 ? &fileencoding : ''
 endfunction
 
 function! LightlineFileType()
-    if winwidth(0) < 100
-        return ''
-    endif
-    return &filetype
+    return winwidth(0) >= 100 ? &filetype : ''
 endfunction
 
 let g:lightline['component_function']['fileformat'] = 'LightlineFileFormat'

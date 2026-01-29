@@ -1,22 +1,3 @@
-vim.diagnostic.config({
-  virtual_text = {
-    enabled = true,
-    severity = { min = vim.diagnostic.severity.WARN },
-  },
-  signs = true,
-  underline = true,
-  severity_sort = true,
-  update_in_insert = false,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = "if_many",
-    header = "",
-    prefix = "",
-  },
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "java",
   callback = function()

@@ -27,11 +27,11 @@ require('telescope').setup({
     mappings = {
       n = {
         ['<C-q>'] = actions.close,
-        ['<Leader>q'] = actions.close,
+        ['<Leader>,'] = actions.close,
       },
       i = {
         ['<C-q>'] = actions.close,
-        ['<Leader>q'] = actions.close,
+        ['<Leader>,'] = actions.close,
       },
     },
     winblend = 10,
@@ -102,3 +102,23 @@ vim.cmd([[
   highlight TelescopePreviewBorder guifg=#555555
   highlight TelescopePreviewTitle guifg=bg guibg=bg
 ]])
+
+
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "TelescopePreviewerLoaded",
+--   callback = function()
+--     vim.cmd([[
+--       highlight TelescopeNormal guibg=#292929 guifg=#c0c0c0
+--       highlight TelescopeBorder guibg=#292929 guifg=#6e6a86
+--       highlight TelescopePromptNormal guibg=#292929 guifg=#c0c0c0
+--       highlight TelescopePromptBorder guibg=#292929 guifg=#6e6a86
+--       highlight TelescopePromptPrefix guifg=#c4a7e7
+--       highlight TelescopePreviewNormal guibg=#292929 guifg=#c0c0c0
+--       highlight TelescopePreviewBorder guibg=#292929 guifg=#6e6a86
+--       highlight TelescopeResultsNormal guibg=#292929 guifg=#c0c0c0
+--       highlight TelescopeResultsBorder guibg=#292929 guifg=#6e6a86
+--       highlight TelescopePreviewTitle guibg=#292929 guifg=#c0c0c0
+--       highlight TelescopeResultsTitle guibg=#292929 guifg=#c0c0c0
+--     ]])
+--   end,
+-- })
