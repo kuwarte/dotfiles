@@ -1,6 +1,7 @@
 #!/bin/bash
-#
-# chmod +x run.sh <-- prov_permission
+# 
+# standard_name: run.sh (if inside a java file)
+# chmod +x java-run.sh <-- prov_permission
 # my custom .java compile and run with loader
 #
 #
