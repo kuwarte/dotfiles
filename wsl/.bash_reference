@@ -1,0 +1,196 @@
+##################################################################
+# .bash_reference 
+
+# Linux Superglobals / Common Environment Variables Reference
+# +------------------+-------------------------+----------------------------------------------------------------+
+# | Name / Shortcut  | Type / Scope            | Description                                                    |
+# +------------------+-------------------------+----------------------------------------------------------------+
+# | ~                | Path shortcut           | Represents the current user's home directory.                  |
+# | $HOME            | Environment variable    | Absolute path to the user's home directory.                    |
+# | $PWD             | Environment variable    | Print Working Directory (current directory).                   |
+# | $OLDPWD          | Environment variable    | Previous working directory.                                    |
+# | $PATH            | Environment variable    | Colon-separated list of directories to search for executables. |
+# | $USER            | Environment variable    | Current logged-in username.                                    |
+# | $UID             | Environment variable    | Numeric user ID of current user.                               |
+# | $SHELL           | Environment variable    | Default shell path (e.g., /bin/bash).                          |
+# | $HOSTNAME        | Environment variable    | Hostname of the system.                                        |
+# | $TERM            | Environment variable    | Terminal type (e.g., xterm-256color).                          |
+# | $RANDOM          | Environment variable    | Generates a random integer between 0–32767.                    |
+# | $?               | Special variable        | Exit status of the last executed command.                      |
+# | $$               | Special variable        | Process ID (PID) of the current shell.                         |
+# | $!               | Special variable        | PID of the last background command.                            |
+# | $_               | Special variable        | Last argument of the previous command.                         |
+# | $0               | Special variable        | Name of the current script or shell.                           |
+# +------------------+----------------------------+-------------------------------------------------------------+
+
+# Linux Commands
+# +----------------+-----------------------------------------+-----------------------------------------------+
+# | Command        | Usage / Options                         | Description                                   |
+# +----------------+-----------------------------------------+-----------------------------------------------+
+# | ls             | ls, ls -l, ls -a                        | List files and directories.                   |
+# | cd             | cd <dir>, cd .., cd ~                   | Change directory.                             |
+# | pwd            | pwd                                     | Print current working directory.              |
+# | mkdir          | mkdir <dir>                             | Create a new directory.                       |
+# | rmdir          | rmdir <dir>                             | Remove an empty directory.                    |
+# | rm             | rm <file>, rm -r <dir>                  | Remove files or directories recursively.      |
+# | cp             | cp <src> <dest>, cp -r <dir> <dest>     | Copy files or directories.                    |
+# | mv             | mv <src> <dest>                         | Move or rename files/directories.             |
+# | touch          | touch <file>                            | Create an empty file or update timestamp.     |
+# | cat            | cat <file>                              | Display file contents.                        |
+# | less           | less <file>                             | View file contents page by page.              |
+# | head           | head <file>, head -n 10 <file>          | Show first 10 lines of a file.                |
+# | tail           | tail <file>, tail -n 10 <file>          | Show last 10 lines of a file.                 |
+# | grep           | grep "pattern" <file>                   | Search for a pattern in files.                |
+# | find           | find <path> -name "<pattern>"           | Find files by name in directories.            |
+# | echo           | echo "text"                             | Print text to terminal.                       |
+# | man            | man <command>                           | Show manual for a command.                    |
+# | chmod          | chmod 755 <file>                        | Change file permissions.                      |
+# | chown          | chown user:group <file>                 | Change file owner and group.                  |
+# | df             | df -h                                   | Show disk usage for file systems.             |
+# | du             | du -h <file/dir>                        | Show disk usage of file/directory.            |
+# | ps             | ps, ps aux                              | Show running processes.                       |
+# | top            | top                                     | Monitor system processes interactively.       |
+# | kill           | kill <pid>, kill -9 <pid>               | Terminate a process by PID.                   |
+# | tar            | tar -czvf archive.tar.gz <files>        | Create compressed archive.                    |
+# | unzip          | unzip file.zip                          | Extract zip archive.                          | 
+# | curl           | curl <url>                              | Transfer data from a URL.                     |
+# | wget           | wget <url>                              | Download files from the web.                  |
+# | ssh            | ssh user@host                           | Connect to remote server via SSH.             |
+# | scp            | scp file user@host:/path                | Copy files to remote server via SSH.          |
+# | history        | history                                 | Show command history.                         |
+# | alias          | alias ll='ls -alF'                      | Create command shortcuts.                     |
+# +----------------+-----------------------------------------+-----------------------------------------------+
+
+# Regex
+# +------------+-----------------------------+-----------------------------------------------+
+# | Pattern    | Meaning / Usage             | Example                                       |
+# +------------+-----------------------------+-----------------------------------------------+
+# | .          | Any single character        | `c.t` matches "cat", "cot", "cut"             |
+# | ^          | Start of line/string        | `^Hello` matches lines starting with "Hello"  |
+# | $          | End of line/string          | `world$` matches lines ending with "world"    |
+# | *          | 0 or more of previous       | `lo*l` matches "ll", "lol", "lool"            |
+# | +          | 1 or more of previous       | `lo+l` matches "lol", "lool" (not "ll")       |
+# | ?          | 0 or 1 of previous          | `colou?r` matches "color" or "colour"         |
+# | []         | Character class             | `[aeiou]` matches any vowel                   |
+# | [^ ]       | Negated character class     | `[^0-9]` matches non-digit characters         |
+# | ()         | Grouping / capture          | `(abc)+` matches "abc", "abcabc"              |
+# | |          | OR operator                 | `cat|dog` matches "cat" or "dog"              |
+# | \          | Escape special character    | `\.` matches literal dot                      |
+# | \d         | Digit (0-9)                 | `\d+` matches 1 or more digits                |
+# | \D         | Non-digit                   | `\D+` matches one or more non-digits          |
+# | \w         | Word character [a-zA-Z0-9_] | `\w+` matches a word                          |
+# | \W         | Non-word character          | `\W+` matches spaces, punctuation             |
+# | \s         | Whitespace                  | `\s+` matches spaces or tabs                  |
+# | \S         | Non-whitespace              | `\S+` matches non-space sequences             |
+# | {n}        | Exact n repetitions         | `a{3}` matches "aaa"                          |
+# | {n,}       | At least n repetitions      | `a{2,}` matches "aa", "aaa", "aaaa"           |
+# | {n,m}      | Between n and m repeats     | `a{2,4}` matches "aa", "aaa", "aaaa"          |
+# | ?= / ?!    | Lookahead                   | `foo(?=bar)` matches "foo" before "bar"       |
+# | ?<= / ?<!  | Lookbehind                  | `(?<=foo)bar` matches "bar" after "foo"       |
+# +------------+-----------------------------+-----------------------------------------------+
+
+# Bash Symbols
+# +-----------------+----------------------+-----------------------------------------------------+
+# | Symbol / Syntax | Type / Context       | Description / Example                               |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | |               | Pipe                 | Pass stdout of one command to stdin of another.     |
+# |                 |                      | Example: ls -l | grep "txt"                         |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | >               | Redirect             | Overwrite a file with command output.               |
+# |                 |                      | Example: echo "Hello" > file.txt                    |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | >>              | Append Redirect      | Append command output to a file.                    |
+# |                 |                      | Example: echo "World" >> file.txt                   |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | &&              | Logical AND          | Run next command only if previous succeeds.         |
+# |                 |                      | Example: mkdir myfolder && cd myfolder              |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | ||              | Logical OR           | Run next command only if previous fails.            |
+# |                 |                      | Example: mkdir existingfolder || echo "Exists"      |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | $VAR            | Variable             | Access value of a variable.                         |
+# | $1, $2          | Positional params    | Access script arguments: $1 = first, $2 = second    |
+# | $@              | All parameters       | All arguments as array                              |
+# | $*              | All parameters       | All arguments as single string                      |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | $(...)          | Command Substitution | Capture output of a command into a variable.        |
+# |                 |                      | Example: today=$(date +%Y-%m-%d)                    |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | [ ... ]         | Test / Conditional   | Evaluate expressions in if, while, etc.             |
+# | [[ ... ]]       | Extended test        | Supports more operators (regex, logical ops).       |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | -f <file>       | File test            | True if file exists and is a regular file.          |
+# | -d <dir>        | Directory test       | True if directory exists.                           |
+# | -z <string>     | String test          | True if string length is zero.                      |
+# | -n <string>     | String test          | True if string length is non-zero.                  |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | &               | Background process   | Run command in background.                          |
+# | fg              | Foreground job       | Bring background job to foreground.                 |
+# | bg              | Resume job in bg     | Resume suspended job in background.                 |
+# +-----------------+----------------------+-----------------------------------------------------+
+# | $?              | Special variable     | Exit status of last command (0 = success).          |
+# | $$              | Special variable     | PID of current shell.                               |
+# | $_              | Special variable     | Last argument of previous command.                  |
+# +-----------------+----------------------+-----------------------------------------------------+
+
+# PostgreSQL and MySQL init
+# +------------------------+-------------------------------------------+---------------------------------------+
+# | Database               | Command / Shortcut                        | Description                           |
+# +------------------------+-------------------------------------------+---------------------------------------+
+# | PostgreSQL             | sudo systemctl start postgresql           | Start PostgreSQL service.             |
+# |                        | sudo systemctl stop postgresql            | Stop PostgreSQL service.              |
+# |                        | sudo systemctl restart postgresql         | Restart PostgreSQL service.           |
+# |                        | sudo systemctl status postgresql          | Show status of PostgreSQL service.    |
+# |                        | sudo -i -u postgres                       | Switch to postgres system user.       |
+# |                        | psql                                      | Enter PostgreSQL shell.               |
+# |                        | \l                                        | List databases in psql.               |
+# |                        | \c <database>                             | Connect to a database.                |
+# |                        | \dt                                       | List tables in current database.      |
+# |                        | \q                                        | Quit psql shell.                      |
+# +------------------------+-------------------------------------------+---------------------------------------+
+# | MySQL / MariaDB        | sudo systemctl start mysql                 | Start MySQL/MariaDB service.         |
+# |                        | sudo systemctl stop mysql                  | Stop MySQL/MariaDB service.          |
+# |                        | sudo systemctl restart mysql               | Restart MySQL/MariaDB service.       |
+# |                        | sudo systemctl status mysql                | Show status of MySQL/MariaDB.        |
+# |                        | mysql -u root -p                           | Access MySQL shell (password prompt).|
+# |                        | SHOW DATABASES;                            | List all databases in MySQL.         |
+# |                        | USE <database>;                            | Switch to a database in MySQL.       |
+# |                        | SHOW TABLES;                               | List tables in current database.     |
+# |                        | EXIT;                                      | Quit MySQL shell.                    |
+# +------------------------+-------------------------------------------+---------------------------------------+
+
+# Git Command Reference Table (lazygit -> visual TUI)
+# +-----------------------------------------+-------------------------------------------------------+
+# | Command                                 | Description                                           |  
+# +-----------------------------------------+-------------------------------------------------------+
+# | git init                                | Initialize a new Git repository locally.              |
+# | git status                              | Show the working tree status.                         |
+# | git add <file>                          | Stage file(s) for commit.                             |
+# | git add .                               | Stage all changes in current directory.               |
+# | git commit -m "<message>"               | Commit staged changes with a message.                 |
+# | git commit -am "<message>"              | Stage & commit tracked files in one.                  |
+# | git log                                 | Show commit history.                                  |
+# | git log --oneline                       | Show commit history in one line per commit.           |
+# | git log --oneline --graph --all         | Show visual graph of all branches.                    |
+# | git checkout <branch>                   | Switch to a branch.                                   |
+# | git checkout -b <branch>                | Create a new branch and switch to it.                 |
+# | git branch                              | List all local branches.                              |
+# | git branch -a                           | List all local and remote branches.                   |
+# | git remote add origin <url>             | Add remote repository.                                |
+# | git remote -v                           | Show configured remotes.                              |
+# | git push                                | Push commits to remote repository.                    |
+# | git push -u origin <branch>             | Push and set upstream branch.                         |
+# | git pull                                | Fetch and merge changes from remote.                  |
+# | git fetch                               | Fetch changes from remote without merging.            |
+# | git merge <branch>                      | Merge specified branch into current branch.           |
+# | git stash                               | Save uncommitted changes for later.                   |
+# | git stash pop                           | Apply last stash and remove it.                       |
+# | git stash list                          | List all stashed changes.                             |
+# | git diff                                | Show unstaged changes.                                |
+# | git diff --cached                       | Show staged changes.                                  |
+# | git reset HEAD <file>                   | Unstage file(s).                                      |
+# | git reset --hard <commit>               | Reset branch to a specific commit, discarding changes.|
+# | git revert <commit>                     | Revert a commit by creating a new commit.             |
+# | git tag <name>                          | Create a tag at current commit.                       |
+# | git show <commit/tag>                   | Show details of a commit or tag.                      |
+# +-----------------------------------------+-------------------------------------------------------+

@@ -1,29 +1,30 @@
-######################################
-#
-# grep "i want to find" file_name
-# ls | grep "pattern"
-# lazygit -> visual tui
-# ncmpcpp -> audio
-# postgres --> sudo -i -u postgres --> psql
-#   > \c (USE)
-#   > \q (QUIT)
-#
+alias gs='git status'
+alias gl='git log --oneline --graph --all'
+alias ga='git add'
+alias gc='git commit'
+alias gca='git commit -am'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gb='git branch'
+alias gpush='git push'
+alias gpull='git pull'
+alias gst='git stash'
+alias gsp='git stash pop'
+alias gsl='git stash list'
+alias gdf='git diff'
+alias gdc='git diff --cached'
+alias grh='git reset HEAD'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias home='cd ~'
-#
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-#
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
-alias gp='git push'
-alias gl='git log --oneline --graph --all'
-#
+
 alias nv='nvim'
-#
+
 alias ni='npm install'
 alias ns='npm start'
 alias nr='npm run'

@@ -1,5 +1,5 @@
 /**
- * My Standard TSNode Logger
+ * TSNode Logger
  *
  * Provides:
  * - Colored output in terminal
