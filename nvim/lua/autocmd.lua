@@ -9,7 +9,7 @@ vim.o.smarttab = true
 vim.o.mouse = "a"
 vim.o.encoding = "UTF-8"
 vim.o.visualbell = true
-vim.o.showmode = false
+-- vim.o.showmode = false
 vim.o.swapfile = false
 vim.o.timeoutlen = 300
 vim.o.clipboard = "unnamedplus"
@@ -41,7 +41,7 @@ local function start_menu()
 
     vim.api.nvim_buf_set_lines(0, 0, -1, false, {
         "                                                                                     ",
-        "                  +kWM$m[,.                     NeoVIM -- Menu [config: kuwarte]     ",
+        "                  +kWM$m[,.                     NeoVIM -- Menu                       ",
         "                  `j#mdM@BJ~^.  .'.             =====================================",
         "                  ./@hOZh$@@#r>+Z/'             Open tree with [<Space>/]:           ",
         "               ....($aZkB@@@@@@@Bbc}:'.         [ a ] Create File/Folder             ",
@@ -107,11 +107,11 @@ api.nvim_create_autocmd("BufEnter", {
     end
 })
 
-api.nvim_create_autocmd({"BufDelete", "BufWritePost", "TextChanged", "TextChangedI"}, {
-    callback = function()
-        if vim.fn.exists('*lightline#update') == 1 then
-            vim.fn['lightline#update']()
-        end
-    end
-})
+-- api.nvim_create_autocmd({"BufDelete", "BufWritePost", "TextChanged", "TextChangedI"}, {
+--     callback = function()
+--         if vim.fn.exists('*lightline#update') == 1 then
+--             vim.fn['lightline#update']()
+--         end
+--     end
+-- })
 

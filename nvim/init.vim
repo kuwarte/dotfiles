@@ -1,50 +1,3 @@
-                                   "`)@@hr>`.                                        
-                                   ".+$@@@@p);.                                      
-                                   ".>a@$B@@@BC~`.                                   
-                                   " ;Q@BkpM@@@@#t,..                                
-                                   " '{@@oZOw#@@@@@o]`.                              
-                                   " .+a@WdOOOpM@@@@@WOI.       .'^.                 
-                                   " .IJ@@aOOOOZhB@@@@@@hj^   .'+dO^                 
-                                   "  '}B@#wOOOmpkW@@@@@@@$Q|v0a@$J'                 
-                                   "  .-W@WdOZhMB@@@@@@@@@@@@@@@@b|[i"'.             
-                                   "  .[$@$kOmbM@@@@@@@@@@@@@@@@@@@@@@MC1;.          
-                              ".;[1(|){v@@@MoB@@@@@@@@@@@@@@@@@@@@@@@@@@@$Ji'.       
-    "..'..                     .'_b@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@C~`.     
-   ".,d@@h);^...               .'+W@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@k}^.:X[`     
-   ".I$@@@@@@$on!'.           .+W@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$Z<'.     `
-   ".,d@@@@@@@@@@@$W#akbddba*W@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@MabpwhB
-    "`/@@@@@@@@@@@@@@@@@@@@@@@@@@$bh@@@aJk@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B-
-    ".ld@@@@@@@@@@@@@@@@@@@@@@@@@@amh@WwJa@WmQo@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@X[".
-     "'_W@@@@@@@@@@@@@@@@@@@@@@@@@$kwo$okBavnb$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$X".
-      "`/@@@@@@@@@@@@@@@@@@@@@jiitb@$@@@@@#aWWhp*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@d;
-      "."f@@@@@@@@@@@@@@@@@@@@@@#0a@@@@@@@@hn|txb$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@O
-       "."r$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-         "^)W@@@@@@@@@@@@@@@@$z[>ih@@@@@@@*r~}z*@@@@@@BWW@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-          ".~p@@@@@@@@@@@@@@@@dW@@@@@@@@@@@@$pzk@@@p]^...`|$@@@@@@@@@@@@@@@@@@@@@@@@@
-        ".'i0@@@@@@@@@@@@@@@@@@@B);fWX>mMf;nW@@@@b<..... ..`}@@@@@@@@@@@@@@@@@@@@@@@@
-      "'-k#@@@@@@@@@@@@@@@@@@@@WI;p@o)>p@$0>/M@@*-...xx`.  .'|@@@@@@@@@@@@@@@@@@@@@@@
-      "..^!+}Q@@@@@@@@@@@@@@@@@@*W@@MXxM@@@$@@@@k~. .^w/'  ..l@@@@@@@@@@@@@@@@@@@@@@@
-           ""v@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@a+.  .;o-. ..+@@@@@@@@@@@@@@@@@@@@@@@
-           ":X@@@@@@@@@@@@@@@dr||jmM@@@@@@@@@@@@@J;.. .I+...>B@@@@@@@@@@@@@@@@@@@@@@@
-          ".>Z@@@@@@@@@@@@Bz;......^)d@@@@@@@@@@@@k|:...':)C@@@@@@@@@@@@@@@@@@@@@@@@@
-      "...^]d@@@@@@@@@@@@$<.  .Zl.  .;Y@@@@@@@@@@@@@@#mk$@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-     "."|O$@@@@@@@@@@@@@@/`    lo".  .+*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-      ".>p$@@@@@@@@@@@@@@]'    '(w'  .>p@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-       "..^<zwa@@@@@@@@@@WI.   .^Y/..`)$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-           "`f$@@@@@@@@@@@M+'   ....;z$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-          ".[*@@@@@@@@@@@@@@amOYxCwh@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-          ",n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-          "<h@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-         ".[$#kM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-         ".<v>;Y@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-             ".)o@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            "..fB@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            ".}o@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-         ".."xW@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        "`}p#@@@@$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        ".',l<+~l_m@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                ".)o@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
-	
 " |==================================== == NeoVIM Config
 " ======================================================
 " Plugins: use VimPlug
@@ -54,6 +7,8 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 " --- Essentials ---
+Plug 'folke/tokyonight.nvim'
+" Plug 'nvim-lualine/lualine.nvim'
 Plug 'tpope/vim-surround'						
 	" syntaxYouSurround: ys{motion}{surround_char}
 		" {motion}: {iw} (inner word), {$)} (rest of line), {s(} (whole line), {ap} (paragraph text), {it} (inner text)  
@@ -65,8 +20,9 @@ Plug 'tpope/vim-commentary'
 	" syntaxCommentInVisualMode: gc
 	" syntaxCommentMotion: gc{motion}
 Plug 'nvim-tree/nvim-tree.lua'
-Plug 'itchyny/lightline.vim'          
-Plug 'mengelbrecht/lightline-bufferline'
+Plug 'nvim-tree/nvim-web-devicons'
+" Plug 'itchyny/lightline.vim'          
+" Plug 'mengelbrecht/lightline-bufferline'
 Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
 	" syntaxToggleTagbar: <Space>tb 
 Plug 'junegunn/fzf'     
@@ -101,6 +57,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'neovim/nvim-lspconfig', { 'tag': 'v1.4.0' }
 Plug 'stevearc/conform.nvim'
@@ -133,67 +90,70 @@ set number
 set relativenumber
 set nocursorline
 set background=dark
-set noshowmode
+set showmode
 set nobackup
 set nowritebackup
 set noswapfile
 set clipboard=unnamedplus
 set scrolloff=8
 set sidescrolloff=8
+set statusline=
+set statusline+=%{SidePadding()}
+set statusline+=\ %f
+set statusline+=%{GitBranch()}
+set statusline+=%{FileReadonly()}
+set statusline+=%{FileModified()}
+set statusline+=%=
+set statusline+=%{GitDiff()}
+set statusline+=%{LspErrorCount()}
+set statusline+=%l:%c
+set statusline+=\ %p%%
+set statusline+=%{SidePadding()}
 
 syntax enable
 filetype plugin indent on
 
+
+" Load lua config
 lua require('init')
 
-" ======================================================
 " FZF Configuration
-" ======================================================
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0, 'border': 'single' } }
-let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-let g:fzf_colors = {
-  \ 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0, 'border': 'single' } }
+" let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+" let g:fzf_colors = {
+"   \ 'fg':      ['fg', 'Normal'],
+"   \ 'bg':      ['bg', 'Normal'],
+"   \ 'hl':      ['fg', 'Comment'],
+"   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"   \ 'hl+':     ['fg', 'Statement'],
+"   \ 'info':    ['fg', 'PreProc'],
+"   \ 'border':  ['fg', 'Ignore'],
+"   \ 'prompt':  ['fg', 'Conditional'],
+"   \ 'pointer': ['fg', 'Exception'],
+"   \ 'marker':  ['fg', 'Keyword'],
+"   \ 'spinner': ['fg', 'Label'],
+"   \ 'header':  ['fg', 'Comment'] }
 
 
-
-
-
-
-
-
-
-
-
-" ======================================================
-" No Title
-" ======================================================
+" Ctags config
 let g:tagbar_ctags_bin = '/usr/bin/ctags'
 
-let g:undotree_DiffAuto = 0
-let g:NERDTreeGitStatusUseNerdFonts = 0
 
-let g:NERDTreeGitStatusIndicatorMap = {
-      \ 'Modified'  : 'M',
-      \ 'Staged'    : 'S',
-      \ 'Untracked' : '?',
-      \ 'Renamed'   : 'R',
-      \ 'Deleted'   : 'D',
-      \ 'Dirty'     : '!',
-      \ 'Clean'     : 'C',
-      \ 'Unknown'   : 'U',
-      \ }
+" NERD Tree config
+" let g:undotree_DiffAuto = 0
+" let g:NERDTreeGitStatusUseNerdFonts = 0
+
+" let g:NERDTreeGitStatusIndicatorMap = {
+"       \ 'Modified'  : 'M',
+"       \ 'Staged'    : 'S',
+"       \ 'Untracked' : '?',
+"       \ 'Renamed'   : 'R',
+"       \ 'Deleted'   : 'D',
+"       \ 'Dirty'     : '!',
+"       \ 'Clean'     : 'C',
+"       \ 'Unknown'   : 'U',
+"       \ }
 
 highlight LineNr guifg=#393744 gui=BOLD
 
@@ -201,119 +161,69 @@ if has("title")
     set title
     let &titlestring = 'NVIM: ' . expand('%:t')
 endif
-autocmd BufEnter * let &titlestring = 'NeoVIM -- ' . (expand('%:t') == '' ? '[No File]' : expand('%:t'))
+autocmd BufEnter * let &titlestring = 'nv@' . (expand('%:t') == '' ? '[No File]' : expand('%:t'))
 
 
+" Status line config
+function! SidePadding()
+  return '  '
+endfunction
 
-
-
-
-
-
-
-
-
-
-
-" ======================================================
-" Status Line
-" ======================================================
-
-let g:lightline#bufferline#show_number  = 2
-let g:lightline#bufferline#shorten_path = 0
-let g:lightline#bufferline#smart_path   = 1
-let g:lightline#bufferline#unnamed      = '[No Name]'
-
-set laststatus=2
-let g:lightline = {
-	  \ 'colorscheme': 'simpleblack',
-      \ 'active': {
-      \   'left': [
-      \       [ 'mode', 'paste' ],
-	  \		  [ 'gitbranch', 'readonly','buffers' ]
-      \   ],
-      \   'right': [
-	  \       [ ],
-	  \       [ ],
-	  \		  [ ],
-	  \       ['filename', 'fileformat', 'fileencoding', 'filetype', 'percent', 'lineinfo']
-      \   ]
-      \ },
-      \ 'tabline': {
-      \   'right': [ [ 'close' ] ],
-	  \   'left': [ [ 'buffers' ] ]
-      \ },
-	  \ 'component_function': {
-	  \   'buffers': 'LightlineBufferlineDynamicNumbers',
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'buffers': 'tabsel'
-      \ }
-      \ }
-
-function! LightlineBufferDirPath()
-    if expand('%:p') == ''
-        return '[No File]'
+function! GitBranch()
+  if exists('*FugitiveHead')
+    let l:branch = FugitiveHead()
+    if l:branch != ''
+      return ' [git:' . l:branch . ']'
     endif
-    let l:dir = fnamemodify(expand('%:p'), ':.:h')
-    if l:dir == ''
-        return '/'
-    endif
-    return '[ ' . l:dir . '/% ]'
-endfunction
-let g:lightline['component_function']['filename'] = 'LightlineBufferDirPath'
-
-if !has_key(g:lightline, 'component_function')
-    let g:lightline['component_function'] = {}
-endif
-
-function! LightlineFileFormat()
-    return winwidth(0) >= 100 ? &fileformat : ''
+  endif
+  return ''
 endfunction
 
-function! LightlineFileEncoding()
-    return winwidth(0) >= 100 ? &fileencoding : ''
+function! LspErrorCount()
+  let l:errors = luaeval("#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })")
+  let l:warnings = luaeval("#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })")
+
+  let l:out = ''
+
+  if l:errors > 0
+    let l:out .= ' [E:' . l:errors . ']'
+  endif
+
+  if l:warnings > 0
+    let l:out .= ' [W:' . l:warnings . ']'
+  endif
+
+  return l:out != '' ? l:out . ' ' : ''
 endfunction
 
-function! LightlineFileType()
-    return winwidth(0) >= 100 ? &filetype : ''
-endfunction
-
-let g:lightline['component_function']['fileformat'] = 'LightlineFileFormat'
-let g:lightline['component_function']['fileencoding'] = 'LightlineFileEncoding'
-let g:lightline['component_function']['filetype'] = 'LightlineFileType'
-
-function! LightlineBufferlineMaxWidth() 
-	return 6 
-endfunction
-
-let g:lightline#bufferline#max_width = 'LightlineBufferlineMaxWidth' 
-let g:lightline.component_expand.buffers = 'lightline#bufferline#buffers' 
-let g:lightline#bufferline#modified = ' [+]' 
-let g:lightline#bufferline#more_buffers = '...' 
-
-let g:lightline#bufferline#composed_ordinal_number_map = {}
-for i in range(1, 30)
-	let g:lightline#bufferline#composed_ordinal_number_map[i] = '[ ' . i . ' ]'
-endfor
-
-function! LightlineBufferlineDynamicNumbers()
-    let l:map = {}
-    for buf in range(1, bufnr('$'))
-        let l:map[buf] = buf . ':'
-    endfor
-    return l:map
-endfunction
-
-function! LightlineGitBranch()
-    if exists('*FugitiveHead')
-        let l:branch = FugitiveHead()
-        return l:branch !=# '' ? l:branch : ''
-    endif
+function! GitDiff()
+  if !isdirectory('.git')
     return ''
+  endif
+
+  let l:output = system("git diff --numstat")
+  let l:add = 0
+  let l:del = 0
+
+  for line in split(l:output, "\n")
+    if line != ''
+      let parts = split(line)
+      let l:add += str2nr(parts[0])
+      let l:del += str2nr(parts[1])
+    endif
+  endfor
+
+  if l:add == 0 && l:del == 0
+    return ''
+  endif
+
+  return ' [+' . l:add . ' -' . l:del . '] '
 endfunction
 
+function! FileModified()
+  return &modified ? ' [+]' : ''
+endfunction
+
+function! FileReadonly()
+  return &readonly ? ' [-]' : ''
+endfunction

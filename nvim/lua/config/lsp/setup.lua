@@ -19,11 +19,12 @@ vim.diagnostic.config({
     style = "minimal",
     border = "single",
     source = "if_many",
-    header = "",
-    prefix = "",
   },
 })
 
+vim.keymap.set("n", "<leader>e", function()
+  vim.diagnostic.open_float(nil, { focusable = false })
+end)
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --   vim.lsp.diagnostic.on_publish_diagnostics, {
 --     virtual_text = false,     
@@ -82,6 +83,11 @@ vim.keymap.set("n", "<leader>m", vim.diagnostic.setloclist, keymaps_opts)
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+local luasnip = require("luasnip")
+require("luasnip.loaders.from_vscode").lazy_load()
+
+luasnip.filetype_extend("php", { "html" })
+
 local on_attach = function(client, bufnr)
   if client.name == "ts_ls" then
     client.server_capabilities.documentFormattingProvider = false
@@ -120,7 +126,7 @@ lspconfig.ts_ls.setup({
 lspconfig.html.setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  filetypes = { "html", "typescriptreact", "javascriptreact" },
+  filetypes = { "html", "typescriptreact", "javascriptreact", "php" },
 })
 
 lspconfig.cssls.setup({
@@ -143,6 +149,49 @@ lspconfig.tailwindcss.setup({
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+})
+
+lspconfig.intelephense.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "php" },
+  root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
+  settings = {
+    intelephense = {
+      files = { 
+          maxSize = 5000000,
+          associations = { "*.php" },
+      },
+      -- stubs = {
+      --   "apache", "bcmath", "bz2", "calendar", "Core", "curl", "date", "dom",
+      --   "enchant", "fileinfo", "filter", "ftp", "gd", "hash", "iconv", "intl",
+      --   "json", "libxml", "mbstring", "mysqli", "mysqlnd", "openssl", "pcre",
+      --   "PDO", "pdo_mysql", "Phar", "readline", "session", "SimpleXML",
+      --   "soap", "sockets", "spl", "standard", "tokenizer", "xml", "xmlreader",
+      --   "xmlwriter", "xsl", "zip", "zlib"
+      -- },
+      environment = {
+        includePaths = { "/usr/share/php" },
+      },
+      diagnostics = {
+        undefinedVariables = false, 
+      },
+    },
+  },
+})
+
+lspconfig.pyright.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "python" },
+  root_dir = lspconfig.util.root_pattern(".git", "pyproject.toml", "setup.py", "requirements.txt"),
+})
+
+lspconfig.svelte.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,  
+    filetypes = { "svelte" },
+    root_dir = lspconfig.util.root_pattern("package.json", ".git"),
 })
 
 local function setup_solidity_lsp()
@@ -196,12 +245,13 @@ end
 
 setup_solidity_lsp()
 
-vim.diagnostic.config({
-  update_in_insert = true,
-})
+-- vim.diagnostic.config({
+--   update_in_insert = true,
+-- })
 
 require("conform").setup({
   formatters_by_ft = {
+    php = { "php_cs_fixer" },
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
     typescript = { "prettier" },

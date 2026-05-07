@@ -36,6 +36,7 @@ end
 
 require_and_init("config.rosepine")
 local modules = {
+  -- "config.lualine",
   "config.lsp.setup",
   "config.lsp.java", 
   "config.cmp",

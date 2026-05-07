@@ -43,11 +43,10 @@ map("n", "<leader>j", "<C-w>j", opts)
 map("n", "<leader>k", "<C-w>k", opts)
 map("n", "<leader>l", "<C-w>l", opts)
 
--- map("t", "<F6>", [[<C-\><C-n>:FloatermToggle<CR>]], opts)
--- map("n", "<F6>", ":FloatermToggle<CR>", opts)
--- vim.g.floaterm_keymap_new  = "<F7>"
--- vim.g.floaterm_keymap_prev = "<F8>"
--- vim.g.floaterm_keymap_next = "<F9>"
+map("n", "<leader>sv", "<cmd>vsplit<CR>", opts)
+map("n", "<leader>sh", "<cmd>split<CR>", opts)
+
+map("n", "<leader>sq", "<cmd>only<CR>", opts)
 
 map("n", "<Leader>tb", ":TagbarToggle<CR>", opts)
 

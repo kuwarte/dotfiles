@@ -49,10 +49,14 @@ require("rose-pine").setup({
 
     palette = {
         moon = {
-			base = '#000000',
-			overlay = '#363738',
+            -- base = '#1e2230',
+			-- base = '#05060a',
+			-- base = "#0a0a0f",
+            base    = "#0e1018",
+            overlay = '#363738',
         },
-    },
+       
+},
 
     highlight_groups = {
     },

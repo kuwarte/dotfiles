@@ -1,3 +1,5 @@
+require("nvim-web-devicons").setup()
+
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
@@ -12,7 +14,7 @@ require("nvim-tree").setup({
       enable = true,
       open_win_config = function()
         local width = 40
-        local height = vim.o.lines - 4
+        local height = vim.o.lines - 5
         return {
           relative = "editor",
           width = width,
@@ -45,19 +47,18 @@ require("nvim-tree").setup({
         folder_arrow = true,
       },
       glyphs = {
-        default = "",
-        symlink = "",
-        bookmark = "",
-        folder = {
-          arrow_closed = "▶ ",
-          arrow_open = "▼ ",
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "@",
-          symlink_open = "@",
-        }, 
+        default = "󰈚",
+          symlink = "",
+  bookmark = "",
+  folder = {
+    arrow_closed = "",
+    arrow_open = "",
+    default = "",
+    open = "",
+    empty = "",
+    empty_open = "",
+    symlink = "",
+    symlink_open = "",        }, 
         git = {
           unstaged = "[M]",
           staged = "[S]",

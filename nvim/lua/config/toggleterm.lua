@@ -38,7 +38,7 @@ M.setup = function()
       row = function()
         return math.floor(vim.o.lines * 0.05) 
       end,
-      winblend = 10,
+      winblend = 5,
     },
   })
   
@@ -52,7 +52,8 @@ M.setup = function()
     end,
   })
   
-  vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter", "UIEnter"}, {
+  -- vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter", "UIEnter"}, {
+  vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter"}, {
     callback = function()
       vim.cmd("highlight! ToggleTermBorder guifg=#555555 guibg=NONE")
     end,
@@ -132,7 +133,7 @@ M.init = function()
   M.setup_keymaps()
   
   vim.defer_fn(function()
-    vim.cmd("highlight! ToggleTermBorder guifg=#555555 guibg=NONE")
+    vim.cmd([[highlight ToggleTermBorder guifg=#555555 guibg=NONE]])
   end, 100)
 end
 
